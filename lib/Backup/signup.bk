@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlue[600],
+        title: Text(
+          "SignUp",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            // color: Colors.black,
+            fontSize: 22,
+          ),
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.only(
+          left: 15,
+          right: 15,
+        ),
+        margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.02,
+        ),
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                "Create an Account",
+                style: TextStyle(
+                  fontSize: 23,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Enter your name",
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            TextFormField(
+              obscureText: false,
+              autocorrect: false,
+              enableSuggestions: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'First name',
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              obscureText: false,
+              autocorrect: false,
+              enableSuggestions: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Last name',
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: MediaQuery.of(context).size.height * 0.3,
+              ),
+              child: RaisedButton(
+                onPressed: () => Navigator.pushNamed(context, '/contactinfo'),
+                color: Colors.lightBlue,
+                child: Text("Next"),
+                elevation: 10,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

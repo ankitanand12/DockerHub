@@ -1,0 +1,46 @@
+import 'package:DockerApp/Welcome_SignIn_SignUp/SignIn.dart';
+import 'package:DockerApp/Welcome_SignIn_SignUp/forgotpass.dart';
+import 'package:DockerApp/Welcome_SignIn_SignUp/signUpContactDetails.dart';
+import 'package:DockerApp/Welcome_SignIn_SignUp/signUp.dart';
+import 'package:DockerApp/Welcome_SignIn_SignUp/welcomeScreen.dart';
+import 'package:flutter/material.dart';
+
+void main() => runApp(
+      MaterialApp(
+        title: "Docker App",
+        initialRoute: '/',
+        checkerboardOffscreenLayers: false,
+        routes: {
+          // "/" route, build the WelcomeScreen.
+          '/': (context) => WelcomeScreen(),
+
+          //"/second" route, build the LogInScreen.
+          '/login': (context) => SignInScreen(),
+          
+          // "/signup" route build the SignInScreen
+          '/signup': (context) => SignUpScreen(),
+
+          //"/contact" route build the ContactInfo
+          '/contactinfo': (context) => ContactInfo(),
+          
+          //"/forgotpass" route build the ForgotPassScreen
+          '/forgotpass': (context) => ForgotPassScreen(),
+        },
+        debugShowCheckedModeBanner: false,
+        // theme: ThemeData(primarySwatch: Colors.blue),
+      ),
+    );
+
+/*  TODO Next page
+  onPressed: () {
+   Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => clssName()),
+  );
+}
+
+  TODO onPressed: () {
+  Navigator.pop(context);
+}
+
+*/

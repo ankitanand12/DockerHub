@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "915460237134",
+    "firebase_url": "https://docker-bc0d3.firebaseio.com",
+    "project_id": "docker-bc0d3",
+    "storage_bucket": "docker-bc0d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915460237134:android:8906064dcc6035f0bae01f",
+        "android_client_info": {
+          "package_name": "com.example.DuckerHub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915460237134-kkssguog1njdbdv5q20v0cposs8en1m0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw6Y0iIkWdk4vKpumSSkHymF7kEGUaAxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915460237134-kkssguog1njdbdv5q20v0cposs8en1m0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

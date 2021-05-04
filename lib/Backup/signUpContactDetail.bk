@@ -1,0 +1,202 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+
+class ContactInfo extends StatefulWidget {
+  @override
+  _ContactInfoState createState() => _ContactInfoState();
+}
+
+class _ContactInfoState extends State<ContactInfo> {
+  var signup = FirebaseAuth.instance;
+  var email;
+  var pass;
+  bool call = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlue[600],
+        title: Text(
+          "Enter Your Details",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            // color: Colors.black,
+            fontSize: 22,
+          ),
+        ),
+      ),
+      body: ModalProgressHUD(
+        inAsyncCall: call,
+        child: Container(
+          padding: EdgeInsets.only(
+            left: 15,
+            right: 15,
+          ),
+          margin: EdgeInsets.only(
+            top: MediaQuery.of(context).size.height * 0.02,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Enter Your Birthday",
+                style: TextStyle(),
+                textDirection: TextDirection.ltr,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Container(
+                    // color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: TextFormField(
+                      autocorrect: false,
+                      enableSuggestions: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Day',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20),
+                    // color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.30,
+                    child: TextFormField(
+                      autocorrect: false,
+                      enableSuggestions: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Month',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20),
+                    // color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.30,
+                    child: TextFormField(
+                      autocorrect: false,
+                      enableSuggestions: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Year',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                scrollPadding: EdgeInsets.all(20),
+                autocorrect: false,
+                enableSuggestions: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Gender',
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                onChanged: (value) {
+                  email = value;
+                },
+                scrollPadding: EdgeInsets.all(20),
+                autocorrect: false,
+                enableSuggestions: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email id',
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                onChanged: (value) {
+                  pass = value;
+                },
+                onFieldSubmitted: (value) async {
+                  setState(
+                    () {
+                      call = true;
+                    },
+                  );
+                  try {
+                    var user = await signup.createUserWithEmailAndPassword(
+                        email: email, password: pass);
+                    if (user.additionalUserInfo.isNewUser == true) {
+                      Navigator.pushNamed(context, '/dashboard');
+                    }
+                    print(user);
+                  } catch (e) {
+                    print(e);
+                  }
+                  setState(
+                    () {
+                      call = false;
+                    },
+                  );
+                },
+                scrollPadding: EdgeInsets.all(20),
+                autocorrect: false,
+                enableSuggestions: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              RaisedButton(
+                color: Colors.lightBlue,
+                child: Center(
+                  child: Text(
+                    "Submit",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                elevation: 10,
+                onPressed: () async {
+                  setState(
+                    () {
+                      call = true;
+                    },
+                  );
+                  try {
+                    var user = await signup.createUserWithEmailAndPassword(
+                        email: email, password: pass);
+                    if (user.additionalUserInfo.isNewUser == true) {
+                      Navigator.pushNamed(context, '/dashboard');
+                    }
+                    print(user);
+                  } catch (e) {
+                    print(e);
+                  }
+                  setState(
+                    () {
+                      call = false;
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+
+class SignInScreen extends StatefulWidget {
+  @override
+  _SignInScreenState createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.lightBlue,
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.36,
+            child: Image.asset(
+              "images/docker1.png",
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 20,
+            ),
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.35,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            width: MediaQuery.of(context).size.width * 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "Sign In",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          shadows: [BoxShadow()]),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.43,
+                    ),
+                    FlatButton(
+                      onPressed: () => print("skip"),
+                      child: Text(
+                        "Skip",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            shadows: [BoxShadow()],
+                            color: Colors.lightBlue),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  obscureText: false,
+                  autocorrect: false,
+                  enableSuggestions: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Email or phone',
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                  obscureText: true,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Password',
+                  ),
+                ),
+
+                // TODO Forgot Password Page
+                FlatButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/forgotpass');
+                  },
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                RaisedButton(
+                  onPressed: () => print("click"),
+                  color: Colors.lightBlue,
+                  child: Center(
+                    child: Text(
+                      "SignIn",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  elevation: 10,
+                ),
+                FlatButton(
+                  child: Text("\nCreate new account"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// TODO Creating Container as a button
+/*
+GestureDetector(
+          onTap: () => print("click"),
+          child: Container(
+          alignment: Alignment.center,
+          color: Colors.amber,
+          width: MediaQuery.of(context).size.width * 1,
+          height: MediaQuery.of(context).size.height * 0.05,
+          child: Text("Login"),
+          ),
+       ),
+*/
